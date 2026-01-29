@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { Head, Link } from '@inertiajs/react';
-import { Filter, ExternalLink, Github, Calendar, Tag } from 'lucide-react';
+import { Filter, ExternalLink, Calendar, Tag } from 'lucide-react';
 import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
 
@@ -22,7 +22,7 @@ export default function ProjectsIndex({ projects, tags, settings }) {
 
   const getPrimaryImage = (project) => {
     const primaryImage = project.images.find(img => img.is_primary);
-    return primaryImage ? `/storage/projects/${primaryImage.filename}` : null;
+    return primaryImage ? `/storage/${primaryImage.filename}` : null;
   };
 
   return (
@@ -156,11 +156,8 @@ export default function ProjectsIndex({ projects, tags, settings }) {
                         {/* Links */}
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-4">
-                            {project.website_url && (
+                            {project.project_url && (
                               <ExternalLink size={16} className="text-emerald/60 group-hover:text-emerald transition-colors" />
-                            )}
-                            {project.repo_url && (
-                              <Github size={16} className="text-emerald/60 group-hover:text-emerald transition-colors" />
                             )}
                           </div>
 
@@ -177,26 +174,16 @@ export default function ProjectsIndex({ projects, tags, settings }) {
             )}
 
             {/* Stats */}
-            <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="mt-16 grid grid-cols-2 md:grid-cols-2 gap-6">
               <div className="text-center">
                 <div className="text-3xl font-bold text-emerald mb-2">{projects.length}</div>
                 <div className="text-emerald/60 text-sm">Total Projects</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-emerald mb-2">
-                  {projects.filter(p => p.website_url).length}
+                  {projects.filter(p => p.project_url).length}
                 </div>
                 <div className="text-emerald/60 text-sm">Live Sites</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-emerald mb-2">
-                  {projects.filter(p => p.repo_url).length}
-                </div>
-                <div className="text-emerald/60 text-sm">Open Source</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-emerald mb-2">{tags.length}</div>
-                <div className="text-emerald/60 text-sm">Technologies</div>
               </div>
             </div>
           </div>

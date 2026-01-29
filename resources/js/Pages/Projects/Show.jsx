@@ -83,26 +83,15 @@ export default function ProjectShow({ project }) {
 
                   {/* Action Buttons */}
                   <div className="flex gap-4">
-                    {project.website_url && (
+                    {project.project_url && (
                       <a
-                        href={project.website_url}
+                        href={project.project_url}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 px-6 py-3 bg-emerald text-black font-bold rounded-lg hover:bg-emerald-400 transition-colors"
                       >
                         <ExternalLink size={18} />
                         View Live
-                      </a>
-                    )}
-                    {project.repo_url && (
-                      <a
-                        href={project.repo_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-emerald/10 border border-emerald/30 text-emerald font-semibold rounded-lg hover:bg-emerald/20 transition-colors"
-                      >
-                        <Github size={18} />
-                        View Code
                       </a>
                     )}
                   </div>
@@ -113,7 +102,7 @@ export default function ProjectShow({ project }) {
                   {primaryImage && (
                     <div className="aspect-video rounded-2xl overflow-hidden bg-black/20">
                       <img
-                        src={`/storage/projects/${primaryImage.filename}`}
+                        src={`/storage/${primaryImage.filename}`}
                         alt={primaryImage.caption || project.title}
                         className="w-full h-full object-cover"
                       />
@@ -122,20 +111,6 @@ export default function ProjectShow({ project }) {
                 </div>
               </div>
             </div>
-
-            {/* Project Body */}
-            {project.body && (
-              <div className="mb-12">
-                <div className="bg-gradient-to-br from-white/5 to-white/1 backdrop-blur-lg border border-emerald/20 rounded-2xl p-8">
-                  <h2 className="text-2xl font-bold text-white mb-6">Project Details</h2>
-                  <div
-                    className="prose prose-invert prose-emerald max-w-none"
-                    dangerouslySetInnerHTML={{ __html: project.body }}
-                  />
-                </div>
-              </div>
-            )}
-
             {/* Image Gallery */}
             {images.length > 1 && (
               <div className="mb-12">
@@ -143,7 +118,7 @@ export default function ProjectShow({ project }) {
                 <div className="relative">
                   <div className="aspect-video rounded-2xl overflow-hidden bg-black/20 mb-4">
                     <img
-                      src={`/storage/projects/${images[currentImageIndex].filename}`}
+                      src={`/storage/${images[currentImageIndex].filename}`}
                       alt={images[currentImageIndex].caption || `${project.title} - Image ${currentImageIndex + 1}`}
                       className="w-full h-full object-cover"
                     />

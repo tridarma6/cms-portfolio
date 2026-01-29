@@ -11,11 +11,11 @@ class ProjectsController extends Controller
 {
     public function index()
     {
-        $projects = Project::whereNotNull('published_at')
+        $projects = Project::where('is_featured', true)
             ->with(['images', 'tags'])
             ->orderBy('published_at', 'desc')
             ->get();
-
+        
         $tags = ProjectTag::withCount('projects')
             ->having('projects_count', '>', 0)
             ->orderBy('name')

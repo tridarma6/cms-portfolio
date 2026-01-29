@@ -1,8 +1,9 @@
 import React from 'react';
 import AdminLayout from './Layout/AdminLayout';
 import AnimatedBG from '../../Components/AnimatedBG';
+import { Link } from '@inertiajs/react';
 
-export default function Dashboard({ user, experiences = [] }) {
+export default function Dashboard({ user, experiences = [], projects = [], skills = [] }) {
   return (
     <div className="relative min-h-[70vh]">
       <AnimatedBG className="absolute inset-0 opacity-20" />
@@ -15,11 +16,11 @@ export default function Dashboard({ user, experiences = [] }) {
             <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div className="p-4 bg-white/3 rounded-lg border border-white/6">
                 <div className="text-sm text-emerald/60">Projects</div>
-                <div className="mt-2 text-xl font-semibold">12</div>
+                <div className="mt-2 text-xl font-semibold">{projects.length}</div>
               </div>
               <div className="p-4 bg-white/3 rounded-lg border border-white/6">
                 <div className="text-sm text-emerald/60">Skills</div>
-                <div className="mt-2 text-xl font-semibold">8</div>
+                <div className="mt-2 text-xl font-semibold">{skills.length}</div>
               </div>
               <div className="p-4 bg-white/3 rounded-lg border border-white/6">
                 <div className="text-sm text-emerald/60">Experiences</div>
@@ -48,9 +49,9 @@ export default function Dashboard({ user, experiences = [] }) {
 
           <div className="bg-white/4 border border-white/6 backdrop-blur-md rounded-xl p-6 text-emerald-50 shadow-lg">
             <h3 className="text-sm font-medium text-emerald/80">Quick Actions</h3>
-            <div className="mt-3 space-y-3">
-              <button className="w-full px-3 py-2 bg-emerald text-black rounded-md font-medium shadow-sm hover:brightness-110">New Project</button>
-              <button className="w-full px-3 py-2 border border-white/6 rounded-md text-emerald/80 hover:bg-white/3">View Messages</button>
+            <div className="mt-3 space-y-3 flex flex-col">
+              <Link href='/admin/dashboard' className="w-full px-3 py-2 bg-emerald text-black rounded-md font-medium shadow-sm hover:brightness-110 text-center">New Project</Link>
+              <Link href='/admin/messages' className="w-full px-3 py-2 border border-white/6 rounded-md text-emerald/80 hover:bg-white/3 text-center">View Messages</Link>
             </div>
           </div>
         </div>
