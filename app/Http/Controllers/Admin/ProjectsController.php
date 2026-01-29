@@ -35,19 +35,21 @@ class ProjectsController extends Controller
     {
         $data = $request->validated();
 
-        // Simpan project
         $project = Project::create($data);
 
-        // 🔥 Simpan images ke tabel project_images
-        if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $file) {
+        if ($request->has('images')) {
+            foreach ($request->images as $index => $image) {
+                if (!isset($image['file'])) continue;
+
+                $file = $image['file'];
                 $path = $file->store('projects', 'public');
 
                 ProjectImage::create([
                     'project_id' => $project->id,
                     'filename'   => $path,
-                    'position'   => $project->images()->count(),
-                    'is_primary' => false,
+                    'caption'    => $image['caption'] ?? null,
+                    'position'   => $index,
+                    'is_primary' => $image['is_primary'] ?? false,
                 ]);
             }
         }
@@ -58,10 +60,13 @@ class ProjectsController extends Controller
     }
 
 
+
     public function show(Request $request, Project $project)
     {
+        $image = $project->images()->where('is_primary', true)->first();
         return Inertia::render('Admin/Projects/Show', [
             'project' => $project,
+            'primaryImage' => $image,
             'user' => $request->user()?->only(['id', 'name', 'email', 'role']),
         ]);
     }
@@ -98,25 +103,32 @@ class ProjectsController extends Controller
     {
         $request->validate([
             'images' => 'required|array',
-            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:10240', // 10MB max
+            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:10240',
         ]);
 
-        $uploadedImages = [];
-
-        foreach ($request->file('images') as $file) {
-            $filename = $file->store('projects', 'public');
-
-            $image = ProjectImage::create([
-                'project_id' => $project->id,
-                'filename' => $filename,
-                'position' => $project->images()->count(),
-            ]);
-
-            $uploadedImages[] = $image;
+        if (!$request->hasFile('images')) {
+            return back()->withErrors(['images' => 'No images uploaded']);
         }
 
-        return redirect()->back(303)->with('success', 'Images uploaded.')->with('uploadedImages', $uploadedImages);
+        $startPosition = $project->images()->count();
+
+        foreach ($request->file('images') as $index => $file) {
+
+            $path = $file->store('projects', 'public');
+
+            $project->images()->create([
+                'filename'   => $path,
+                'caption'    => null,
+                'position'   => $startPosition + $index,
+                'is_primary' => false,
+            ]);
+        }
+
+        return redirect()
+            ->back(303)
+            ->with('success', 'Images uploaded successfully.');
     }
+
 
     public function updateImage(Request $request, Project $project, ProjectImage $image)
     {

@@ -37,8 +37,9 @@ Route::middleware(['auth', AdminMiddleware::class])->prefix('admin')->name('admi
     Route::get('/projects/create', [ProjectsController::class, 'create'])->name('projects.create');
     Route::post('/projects', [ProjectsController::class, 'store'])->name('projects.store');
     Route::put('/projects', [ProjectsController::class, 'updateAll'])->name('projects.updateAll');
-
+    
     Route::get('/projects/{project}/edit', [ProjectsController::class, 'edit'])->name('projects.edit');
+    Route::put('/projects/{project}/edit', [ProjectsController::class, 'updateAll'])->name('projects.updateAll2');
     Route::put('/projects/{project}', [ProjectsController::class, 'update'])->name('projects.update');
 
     Route::get('/projects/{project}', [ProjectsController::class, 'show'])->name('projects.show');

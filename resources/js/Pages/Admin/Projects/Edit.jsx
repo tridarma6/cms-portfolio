@@ -12,15 +12,16 @@ export default function Edit({ project }) {
     title: project.title || '',
     slug: project.slug || '',
     description: project.description || '',
-    body: project.body || '',
-    website_url: project.website_url || '',
-    repo_url: project.repo_url || '',
+    project_url: project.project_url || '',
     published_at: project.published_at || '',
     is_featured: project.is_featured || false,
     images: project.images || []
   })
 
   const [images, setImages] = React.useState(project.images || [])
+  React.useEffect(() => {
+    setImages(project.images || [])
+  }, [project.images])
   const [uploading, setUploading] = React.useState(false)
 
   function update(field, value) {
@@ -129,15 +130,11 @@ export default function Edit({ project }) {
   return (
     <div className="relative min-h-[60vh]">
       <div className="relative z-10 p-6 max-w-4xl mx-auto">
-
         <div className="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-8 text-emerald-50 shadow-xl">
-
           <h2 className="text-3xl font-bold text-emerald mb-8">
             Edit Project
           </h2>
-
           <div className="space-y-6">
-
             {/* Title */}
             <div>
               <label className={labelClass}>Title</label>
@@ -147,7 +144,6 @@ export default function Edit({ project }) {
                 className={inputClass}
               />
             </div>
-
             {/* Slug */}
             <div>
               <label className={labelClass}>Slug</label>
@@ -157,7 +153,6 @@ export default function Edit({ project }) {
                 className={inputClass}
               />
             </div>
-
             {/* Description */}
             <div>
               <label className={labelClass}>Short Description</label>
@@ -167,33 +162,12 @@ export default function Edit({ project }) {
                 className={`${inputClass} h-24`}
               />
             </div>
-
-            {/* Body */}
+            {/* Project URL */}
             <div>
-              <label className={labelClass}>Body (HTML)</label>
-              <textarea
-                value={form.data.body}
-                onChange={e => update('body', e.target.value)}
-                className={`${inputClass} h-40`}
-              />
-            </div>
-
-            {/* Website URL */}
-            <div>
-              <label className={labelClass}>Website URL</label>
+              <label className={labelClass}>Project URL</label>
               <input
-                value={form.data.website_url}
-                onChange={e => update('website_url', e.target.value)}
-                className={inputClass}
-              />
-            </div>
-
-            {/* Repo URL */}
-            <div>
-              <label className={labelClass}>Repository URL</label>
-              <input
-                value={form.data.repo_url}
-                onChange={e => update('repo_url', e.target.value)}
+                value={form.data.project_url}
+                onChange={e => update('project_url', e.target.value)}
                 className={inputClass}
               />
             </div>

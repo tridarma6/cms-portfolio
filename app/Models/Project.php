@@ -13,9 +13,7 @@ class Project extends Model
         'title',
         'slug',
         'description',
-        'body',
-        'website_url',
-        'repo_url',
+        'project_url',
         'published_at',
         'is_featured',
     ];

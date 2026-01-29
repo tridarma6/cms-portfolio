@@ -5,8 +5,6 @@ import { Link } from '@inertiajs/react';
 import { showConfirm } from '../../utils/sweetalert';
 
 export default function Projects({ user, projects }) {
-  console.log('Projects =>', projects);
-
   async function destroy(id) {
     const result = await showConfirm('Delete Project', 'Are you sure you want to delete this project?', 'Delete', 'Cancel');
     if (result.isConfirmed) {
