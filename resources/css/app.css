@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.glow-hover:hover {
+  text-shadow:
+    0 0 5px #00ff88,
+    0 0 10px #00ff88,
+    0 0 20px #00ff88;
+}
+
+@font-face {
+    font-family: 'Raluweh';
+    src: url('../fonts/RALUWEH.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+  font-family: 'PlusJakartaSans';
+  src: url('../fonts/PlusJakartaSans/PlusJakartaSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'PlusJakartaSans', sans-serif;
+}
+
+/* Floating Overlay Animation */
+@keyframes floatY {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-60px);
+  }
+}
+
+.floating-element {
+  animation: floatY 8s ease-in-out infinite alternate;
+}
