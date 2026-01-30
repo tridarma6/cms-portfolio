@@ -5,6 +5,8 @@ import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 
 export default function Experiences({ experiences, settings }) {
+  console.log(experiences);
+  
   const formatDate = (date) => {
     return new Date(date).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -38,6 +40,28 @@ export default function Experiences({ experiences, settings }) {
 
     return duration || '< 1 mo';
   };
+
+  const getTotalYearsExperience = (experiences) => {
+    if (!experiences.length) return 0;
+
+    const totalYears = experiences.reduce((total, e) => {
+      if (!e.start_date) return total;
+
+      const start = new Date(e.start_date);
+      const end = e.is_current || !e.end_date
+        ? new Date()
+        : new Date(e.end_date);
+
+      const diff = end - start;
+      const years = diff / (1000 * 60 * 60 * 24 * 365.25);
+
+      return total + years;
+    }, 0);
+
+    return Math.floor(totalYears);
+  };
+
+
 
   return (
     <>
@@ -147,14 +171,11 @@ export default function Experiences({ experiences, settings }) {
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-emerald mb-2">
-                  {Math.max(...experiences.map(e => {
-                    const start = new Date(e.start_date);
-                    const end = e.is_current ? new Date() : new Date(e.end_date);
-                    return Math.floor((end - start) / (1000 * 60 * 60 * 24 * 365));
-                  }))}y
+                  {getTotalYearsExperience(experiences)}y
                 </div>
                 <div className="text-emerald/60 text-sm">Years Experience</div>
               </div>
+
               <div className="text-center">
                 <div className="text-3xl font-bold text-emerald mb-2">
                   {new Set(experiences.map(e => e.company)).size}

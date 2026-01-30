@@ -13,12 +13,17 @@ export default function Show({ experience }) {
     }
   }
 
+  const formatDate = (date) => {
+    if (!date) return ''
+    return date.split('T')[0]
+  }
+
   return (
     <div className="relative min-h-[60vh]">
       <div className="relative z-10 p-6">
         <div className="bg-white/4 border border-white/6 backdrop-blur-md rounded-xl p-6 text-emerald-50 shadow-lg">
           <h2 className=''>{experience.company} @{experience.role}</h2>  
-          <p className="text-sm text-emerald/60">{experience.start_date} - {experience.end_date || 'Present'}</p>
+          <p className="text-sm text-emerald/60">{formatDate(experience.start_date)} to {formatDate(experience.end_date) || 'Present'}</p>
         </div>
       </div>
       <div className="mt-6 p-6 bg-white/3 rounded">{experience.description}</div>
