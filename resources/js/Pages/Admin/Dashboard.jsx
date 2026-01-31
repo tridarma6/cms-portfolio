@@ -36,7 +36,6 @@ export default function Dashboard({ user, experiences = [], projects = [], skill
                       <div className="flex items-center justify-between">
                         <div>
                           <div className="text-sm font-medium text-emerald">{exp.role} @ {exp.company}</div>
-                          <div className="text-xs text-emerald/60">{exp.start_date} - {exp.end_date || 'Present'}</div>
                         </div>
                         <a href={`/admin/experiences/${exp.id}`} className="text-emerald/80 hover:underline">View</a>
                       </div>

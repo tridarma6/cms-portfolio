@@ -1,5 +1,5 @@
 import React from 'react';
-import { Instagram, Linkedin, Globe, Mail } from 'lucide-react';
+import { Instagram, Linkedin, Globe, Mail, MessageCircle } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -65,6 +65,13 @@ export default function Footer() {
                 aria-label="Email"
               >
                 <Mail size={20} />
+              </a>
+              <a
+                href="https://wa.me/6281239693409"
+                className="p-2 text-emerald/60 hover:text-emerald hover:bg-emerald/10 rounded-lg transition-all duration-300 hover:scale-110 transform"
+                aria-label="Email"
+              >
+                <MessageCircle size={20} />
               </a>
             </div>
           </div>
