@@ -7,6 +7,8 @@ export default function Create() {
 
   const form = useForm({
     title: '',
+    project_type: '',
+    position: '',
     slug: '',
     description: '',
     project_url: '',
@@ -100,6 +102,28 @@ export default function Create() {
                 required
               />
               {form.errors.title && <div className="text-red-400 text-sm">{form.errors.title}</div>}
+            </div>
+
+            {/* Project Type */}
+            <div>
+              <div className={labelClass}>Project Type</div>
+              <input  
+                value={form.data.project_type}  
+                onChange={e => form.setData('project_type', e.target.value)}
+                placeholder="Project Type"
+                className={inputClass}  
+              />
+            </div>
+
+            {/* Position */}
+            <div>
+              <div className={labelClass}>Position</div>
+              <input
+                value={form.data.position}
+                onChange={e => form.setData('position', e.target.value)}
+                placeholder="Position"
+                className={inputClass}
+              />
             </div>
 
             {/* Slug */}

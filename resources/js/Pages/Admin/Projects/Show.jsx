@@ -11,6 +11,8 @@ export default function Show({ project, primaryImage }) {
           <div className="flex items-start justify-between">
             <div>
               <h2 className="text-2xl font-bold text-emerald">{project.title}</h2>
+              <p className="text-sm text-emerald/70 mt-1">{project.project_type}</p>
+              <p className="text-sm text-emerald/70 mt-1">{project.position}</p>
               <p className="text-sm text-emerald/70 mt-1">{project.description}</p>
             </div>
             <div className="space-x-2">

@@ -34,7 +34,7 @@ class ProjectsController extends Controller
     public function store(StoreProjectRequest $request)
     {
         $data = $request->validated();
-
+        $data['published_at'] = $data['published_at'] ?? now();
         $project = Project::create($data);
 
         if ($request->has('images')) {

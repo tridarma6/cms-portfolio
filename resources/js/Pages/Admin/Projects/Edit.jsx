@@ -10,6 +10,8 @@ export default function Edit({ project }) {
   
   const form = useForm({
     title: project.title || '',
+    project_type: project.type || '',
+    position: project.position || '',
     slug: project.slug || '',
     description: project.description || '',
     project_url: project.project_url || '',
@@ -141,6 +143,24 @@ export default function Edit({ project }) {
               <input
                 value={form.data.title}
                 onChange={e => update('title', e.target.value)}
+                className={inputClass}
+              />
+            </div>
+            {/* Project Type */}
+            <div>
+              <label className={labelClass}>Project Type</label>
+              <input
+                value={form.data.project_type}
+                onChange={e => update('project_type', e.target.value)}
+                className={inputClass}
+              />
+            </div>
+            {/* Position */}
+            <div>
+              <label className={labelClass}>Position</label>
+              <input
+                value={form.data.position}
+                onChange={e => update('position', e.target.value)}
                 className={inputClass}
               />
             </div>
