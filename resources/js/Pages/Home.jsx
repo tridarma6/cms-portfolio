@@ -15,8 +15,8 @@ export default function Home({ projects = [], settings = {} }) {
       <div className="p-5">
         <h3 className="text-white font-bold text-lg group-hover:text-emerald-300 transition-colors">{project.title}</h3>
         <p className="mt-2 text-emerald/60">{project.description}</p>
-        {project.website_url && (
-          <a href={project.website_url} target="_blank" rel="noopener noreferrer" className="inline-block mt-3 px-3 py-1 text-sm bg-emerald/10 border border-emerald/30 text-emerald rounded-full hover:bg-emerald/20 transition-colors">
+        {project.project_url && (
+          <a href={project.project_url} target="_blank" rel="noopener noreferrer" className="inline-block mt-3 px-3 py-1 text-sm bg-emerald/10 border border-emerald/30 text-emerald rounded-full hover:bg-emerald/20 transition-colors">
             View Project
           </a>
         )}
@@ -63,8 +63,8 @@ export default function Home({ projects = [], settings = {} }) {
 
           <section className="py-12">
             <div className="max-w-4xl mx-auto px-6 rounded-2xl bg-gradient-to-r from-black/60 via-emerald/5 to-black/50 border border-emerald/10 p-10 text-center">
-              <h2 className="text-2xl font-extrabold">Let's build something otherworldly</h2>
-              <p className="mt-3 text-emerald/60">Available for commissions and collaborations. Tell me about your project.</p>
+              <h2 className="text-2xl font-extrabold">Let’s Collaborate and Create Impact to the World</h2>
+              <p className="mt-3 text-white">Available for full-time and part-time roles, also for freelance projects and collaborations</p>
               <a id="contact" href="mailto:hello@eclipse.studio" className="inline-block mt-6 px-6 py-3 rounded-full bg-emerald text-black font-bold">Get In Touch</a>
             </div>
           </section>

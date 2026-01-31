@@ -106,7 +106,7 @@ export default function ProjectsIndex({ projects, tags, settings }) {
                           <img
                             src={getPrimaryImage(project)}
                             alt={project.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                           />
                         ) : (
                           <div className="w-full h-full bg-gradient-to-br from-emerald/20 to-emerald/5 flex items-center justify-center">
