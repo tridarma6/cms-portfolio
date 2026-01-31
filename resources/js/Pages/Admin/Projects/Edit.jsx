@@ -1,6 +1,6 @@
 import React from 'react'
 import AdminLayout from '../Layout/AdminLayout'
-import { useForm, router } from '@inertiajs/react'
+import { useForm, router, Link } from '@inertiajs/react'
 import { showError, showSuccess, showConfirm } from '../../../utils/sweetalert'
 import { usePage } from '@inertiajs/react';
 
@@ -133,9 +133,10 @@ export default function Edit({ project }) {
     <div className="relative min-h-[60vh]">
       <div className="relative z-10 p-6 max-w-4xl mx-auto">
         <div className="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-8 text-emerald-50 shadow-xl">
-          <h2 className="text-3xl font-bold text-emerald mb-8">
-            Edit Project
-          </h2>
+          <div className="flex flex-row justify-between">
+            <h2 className="text-3xl font-bold text-emerald mb-8">Edit Project</h2>
+            <Link href='/admin/projects' className="text-l font-bold text-emerald mb-4 border-2 border-emerald-500 py-2 px-3 rounded-lg items-center justify-center">Back</Link>
+          </div>
           <div className="space-y-6">
             {/* Title */}
             <div>

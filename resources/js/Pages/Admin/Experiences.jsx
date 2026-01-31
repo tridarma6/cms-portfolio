@@ -27,7 +27,6 @@ export default function Experiences({ user, experiences }) {
                 <div key={exp.id} className="p-4 bg-white/3 rounded-lg border border-white/6 flex items-center justify-between">
                   <div>
                     <div className="text-sm font-medium text-emerald">{exp.role} @ {exp.company}</div>
-                    <div className="text-xs text-emerald/60">{exp.start_date} - {exp.end_date || 'Present'}</div>
                   </div>
                   <div className="space-x-2">
                     <Link href={`/admin/experiences/${exp.id}`} className="text-emerald/80 hover:underline">View</Link>

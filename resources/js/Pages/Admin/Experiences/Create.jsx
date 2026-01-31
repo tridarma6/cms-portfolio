@@ -1,6 +1,6 @@
 import React from 'react';
 import AdminLayout from '../Layout/AdminLayout';
-import { useForm } from '@inertiajs/react';
+import { useForm, Link } from '@inertiajs/react';
 
 export default function Create() {
   const form = useForm({ company: '', role: '', description: '', start_date: '', end_date: '', is_current: false, order: 0 });
@@ -17,7 +17,10 @@ export default function Create() {
     <div className="relative min-h-[60vh]">
       <div className="relative z-10 p-6">
         <div className="bg-white/4 border border-white/6 backdrop-blur-md rounded-xl p-6 text-emerald-50 shadow-lg">
-          <h2 className="text-2xl font-bold text-emerald mb-4">Create Experience</h2>
+          <div className='flex flex-row justify-between'>
+            <h2 className="text-2xl font-bold text-emerald mb-4">Create Experience</h2>
+            <Link href='/admin/experiences' className="text-l font-bold text-emerald mb-4 border-2 border-emerald-500 py-2 px-3 rounded-lg">Back</Link>
+          </div>
 
           <form onSubmit={submit} className="space-y-4">
             <div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import AdminLayout from '../Layout/AdminLayout';
-import { useForm } from '@inertiajs/react';
+import { useForm, Link } from '@inertiajs/react';
 
 export default function Edit({ skill }) {
   const form = useForm({ name: skill.name || '', proficiency: skill.proficiency || 0, category: skill.category || '', order: skill.order || 0 });
@@ -17,8 +17,10 @@ export default function Edit({ skill }) {
     <div className="relative min-h-[60vh]">
       <div className="relative z-10 p-6">
         <div className="bg-white/4 border border-white/6 backdrop-blur-md rounded-xl p-6 text-emerald-50 shadow-lg">
-          <h2 className="text-2xl font-bold text-emerald mb-4">Edit Skill</h2>
-
+          <div className='flex flex-row justify-between'>
+            <h2 className="text-2xl font-bold text-emerald mb-4">Edit Skill</h2>
+            <Link href='/admin/skills' className="px-3 py-2 bg-emerald text-black rounded-md font-medium">Back</Link>
+          </div>
           <form onSubmit={submit} className="space-y-4">
             <div>
               <div className={labelClass}>Name</div>
