@@ -6,6 +6,7 @@ import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 import Carousel from '../Components/Carousel';
 import FloatingOverlay from '../Components/FloatingOverlay';
+import { ArrowRight } from 'lucide-react';
 
 export default function Home({ projects = [], settings = {} }) {
   // Create project card components
@@ -49,7 +50,7 @@ export default function Home({ projects = [], settings = {} }) {
               </h1>
               <p className="mt-4 text-white font-normal text-lg font-jakarta">{settings.site_description || 'A cinematic, surreal portfolio exploring light, glass and emerald neon.'}</p>
               <div className="mt-8 flex justify-center gap-4">
-                <a href="/contact" className="px-5 py-3 rounded-xl font-semibold bg-emerald/30 border border-emerald/60 text-white hover:shadow-[0_18px_60px_rgba(0,199,122,0.12)] transform transition">Start a Project</a>
+                <a href="/contact" className="px-5 py-3 rounded-xl font-semibold bg-emerald border border-emerald text-white hover:shadow-[0_18px_60px_rgba(0,199,122,0.12)] transform transition">Start a Project <ArrowRight className="inline-block ml-2"/></a>
               </div>
             </div>
           </section>
@@ -62,7 +63,7 @@ export default function Home({ projects = [], settings = {} }) {
           </section>
 
           <section className="py-12">
-            <div className="max-w-4xl mx-auto px-6 rounded-2xl bg-gradient-to-r from-black/60 via-emerald/5 to-black/50 border border-emerald/10 p-10 text-center">
+            <div className="max-w-4xl mx-auto px-6 rounded-2xl bg-gradient-to-r from-black/60 via-emerald/5 to-black/50 border-2 p-10 text-center border-emerald">
               <h2 className="text-2xl font-extrabold">Let’s Collaborate and Create Impact to the World</h2>
               <p className="mt-3 text-white">Available for full-time and part-time roles, also for freelance projects and collaborations</p>
               <a id="contact" href="mailto:hello@eclipse.studio" className="inline-block mt-6 px-6 py-3 rounded-full bg-emerald text-black font-bold">Get In Touch</a>

@@ -11,7 +11,8 @@ export default {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         heading: ['Poppins', 'sans-serif'],
         raluweh: ['Raluweh', 'sans-serif'],
-        jakarta: ['PlusJakartaSans', 'sans-serif']
+        jakarta: ['PlusJakartaSans', 'sans-serif'],
+        boldjakarta: ['PlusJakartaSans-Bold', 'sans-serif'],
       },
       colors: {
         emerald: {
