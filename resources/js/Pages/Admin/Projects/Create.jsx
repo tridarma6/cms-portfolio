@@ -121,7 +121,7 @@ export default function Create() {
               <input
                 value={form.data.position}
                 onChange={e => form.setData('position', e.target.value)}
-                placeholder="Position"
+                placeholder="['Full-time', 'Part-time', 'Freelance']"
                 className={inputClass}
               />
             </div>

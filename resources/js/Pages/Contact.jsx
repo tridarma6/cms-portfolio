@@ -86,7 +86,7 @@ export default function Contact({ contactInfo = {}, settings }) {
         <main className="pt-24 pb-12">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-12">
-              <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">Get In Touch</h1>
+              <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 font-raluweh">Get In Touch</h1>
               <p className="text-emerald/60 text-lg max-w-2xl mx-auto">
                 Ready to bring your vision to life? Let's discuss your project and create something extraordinary together.
               </p>
@@ -221,26 +221,30 @@ export default function Contact({ contactInfo = {}, settings }) {
                 </div>
 
                 <div className="bg-gradient-to-r from-emerald/5 to-black/40 border border-emerald/20 rounded-xl p-6">
-                  <h3 className="text-lg font-semibold text-white mb-3">Why Choose Eclipse?</h3>
+                  <h3 className="text-lg font-semibold text-white mb-3">
+                    Why choose me?
+                  </h3>
+
                   <ul className="space-y-2 text-emerald/70">
                     <li className="flex items-center gap-2">
                       <div className="w-1.5 h-1.5 bg-emerald rounded-full"></div>
-                      Cinematic quality visuals
+                      Creative and meaningful visual design
                     </li>
                     <li className="flex items-center gap-2">
                       <div className="w-1.5 h-1.5 bg-emerald rounded-full"></div>
-                      Modern web technologies
+                      UX Illustration with surreal & post-modern approach
                     </li>
                     <li className="flex items-center gap-2">
                       <div className="w-1.5 h-1.5 bg-emerald rounded-full"></div>
-                      Fast turnaround times
+                      Professional collaboration and communication
                     </li>
                     <li className="flex items-center gap-2">
                       <div className="w-1.5 h-1.5 bg-emerald rounded-full"></div>
-                      Dedicated support
+                      Reliable delivery and consistent quality
                     </li>
                   </ul>
                 </div>
+
               </div>
             </div>
           </div>

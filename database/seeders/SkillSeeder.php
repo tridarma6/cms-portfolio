@@ -16,12 +16,13 @@ class SkillSeeder extends Seeder
     public function run(): void
     {
         $samples = [
-            ['name' => 'JavaScript', 'proficiency' => 90, 'category' => 'frontend', 'order' => 1],
-            ['name' => 'PHP', 'proficiency' => 85, 'category' => 'backend', 'order' => 2],
-            ['name' => 'React', 'proficiency' => 88, 'category' => 'frontend', 'order' => 3],
-            ['name' => 'Laravel', 'proficiency' => 86, 'category' => 'backend', 'order' => 4],
-            ['name' => 'Tailwind CSS', 'proficiency' => 70, 'category' => 'frontend', 'order' => 5],
+            ['name' => 'Adobe Illustrator', 'proficiency' => 90, 'category' => 'tools', 'order' => 1],
+            ['name' => 'Adobe Photoshop', 'proficiency' => 88, 'category' => 'tools', 'order' => 2],
+            ['name' => 'Figma', 'proficiency' => 85, 'category' => 'tools', 'order' => 3],
+            ['name' => 'UX Illustration', 'proficiency' => 82, 'category' => 'design', 'order' => 4],
+            ['name' => 'Brand Identity', 'proficiency' => 80, 'category' => 'design', 'order' => 5],
         ];
+
 
         foreach ($samples as $s) {
             Skill::updateOrCreate(['name' => $s['name']], $s);

@@ -95,12 +95,9 @@ export default function AdminLayout({ children, user }) {
             <div className="flex items-center gap-4">
             
               <div className="flex items-center gap-3">
-                <button className="p-2 rounded-lg bg-white/6 hover:bg-white/8 transition">
+                <a href='/admin/profile/edit' className="p-2 rounded-lg bg-white/6 hover:bg-white/8 transition">
                   <UserStar className='h-5 w-5 text-emerald/70'/>
-                </button>
-                <div className="flex items-center gap-2">
-                  <div className="h-8 w-8 rounded-full bg-emerald/20 border border-emerald/30 flex items-center justify-center text-sm">{user?.name?.[0] ?? 'B'}</div>
-                </div>
+                </a>
               </div>
             </div>
           </header>

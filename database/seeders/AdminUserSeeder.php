@@ -15,8 +15,8 @@ class AdminUserSeeder extends Seeder
         // Create an admin user if none exists
         if (! User::where('role', 'admin')->exists()) {
             User::factory()->create([
-                'name' => 'Admin User',
-                'email' => 'admin@example.com',
+                'name' => 'Surya Darmawan',
+                'email' => 'admin.access@darmawansurya.com',
                 'role' => 'admin',
                 'password' => bcrypt('password'),
             ]);

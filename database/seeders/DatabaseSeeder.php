@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
             SkillSeeder::class,
             SettingSeeder::class,
             MessageSeeder::class,
+            ProfileSeeder::class
         ]);
     }
 }

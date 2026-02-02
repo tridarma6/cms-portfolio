@@ -4,7 +4,7 @@ import { ArrowLeft, ExternalLink, Github, Calendar, Tag, ChevronLeft, ChevronRig
 import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
 
-export default function ProjectShow({ project }) {
+export default function ProjectShow({ project, settings }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const images = project.images.sort((a, b) => a.position - b.position);
@@ -22,7 +22,7 @@ export default function ProjectShow({ project }) {
     <>
       <Head title={`${project.title}`} />
       <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-emerald-50">
-        <Header currentPage="projects" />
+        <Header currentPage="projects" site_title={settings.site_title || 'Suryas Portfolio'} />
 
         <main className="pt-24 pb-12">
           <div className="max-w-6xl mx-auto px-6">
@@ -104,7 +104,7 @@ export default function ProjectShow({ project }) {
                       <img
                         src={`/storage/${primaryImage.filename}`}
                         alt={primaryImage.caption || project.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                       />
                     </div>
                   )}

@@ -29,14 +29,56 @@ body {
 
 /* Floating Overlay Animation */
 @keyframes floatY {
-  0% {
-    transform: translateY(0px);
+  0%, 100% {
+    transform: translateY(0);
   }
-  100% {
-    transform: translateY(-60px);
+  50% {
+    transform: translateY(-30px);
   }
 }
 
+
+
 .floating-element {
   animation: floatY 8s ease-in-out infinite alternate;
+}
+
+
+/* width scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* track (background) */
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 999px;
+}
+
+/* thumb (yang bisa digeser) */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #10b981, #064e3b); /* emerald */
+  border-radius: 999px;
+  border: 2px solid rgba(0,0,0,0.6);
+}
+
+/* hover effect */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #34d399, #047857);
+}
+
+/* NProgress bar color */
+#nprogress .bar {
+  background: #10b981 !important; /* emerald-500 */
+}
+
+/* Spinner (optional) */
+#nprogress .spinner-icon {
+  border-top-color: #10b981 !important;
+  border-left-color: #10b981 !important;
+}
+
+/* Shadow glow (optional) */
+#nprogress .peg {
+  box-shadow: 0 0 10px #10b981, 0 0 5px #10b981;
 }

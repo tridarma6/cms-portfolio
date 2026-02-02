@@ -4,7 +4,7 @@ import { User, Briefcase, FileText, ExternalLink } from 'lucide-react';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 
-export default function About({ profile, settings }) {
+export default function About({ profile, settings, skills }) {
   if (!profile) {
     return (
       <>
@@ -28,9 +28,9 @@ export default function About({ profile, settings }) {
         <main className="pt-24 pb-12">
           <div className="max-w-4xl mx-auto px-6">
             <div className="text-center mb-12">
-              <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">About Me</h1>
+              <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 font-raluweh">About Me</h1>
               <p className="text-emerald/60 text-lg">
-                Get to know the creative mind behind Eclipse Studio
+                Crafting visual stories through abstract art and surrealist design
               </p>
             </div>
 
@@ -50,7 +50,6 @@ export default function About({ profile, settings }) {
                     </div>
                   )}
                   <h2 className="text-2xl font-bold text-white mb-2">{profile.name}</h2>
-                  <p className="text-emerald font-medium mb-4">{profile.title}</p>
 
                   {profile.social_links && profile.social_links.length > 0 && (
                     <div className="flex justify-center gap-3">
@@ -68,6 +67,37 @@ export default function About({ profile, settings }) {
                     </div>
                   )}
                 </div>
+                <div className="bg-gradient-to-br from-white/5 to-white/1 backdrop-blur-lg border border-emerald/20 rounded-2xl p-6 mt-5">
+                  <h2 className="text-xl font-semibold text-center mb-5 text-white">
+                    My Skills
+                  </h2>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {skills.map((skill, index) => (
+                      <div
+                        key={index}
+                        className="bg-white/5 border border-emerald/20 rounded-xl p-4"
+                      >
+                        {/* title row */}
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-white text-sm font-medium">
+                            {skill.name}
+                          </span>
+                        </div>
+
+                        {/* progress bar */}
+                        <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                          <div
+                            className="h-full bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full transition-all duration-500"
+                            style={{ width: `${skill.proficiency}%` }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+
               </div>
 
               {/* Bio & Details */}
@@ -91,46 +121,56 @@ export default function About({ profile, settings }) {
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="bg-black/20 rounded-lg p-4 border border-emerald/10">
-                      <h4 className="font-semibold text-emerald mb-2">Creative Design</h4>
+                      <h4 className="font-semibold text-emerald mb-2">Digital Illustration</h4>
                       <p className="text-emerald/70 text-sm">
-                        Crafting unique visual experiences that blend art and technology
+                        Creating expressive and imaginative illustrations for brands, stories, and visual campaigns
                       </p>
                     </div>
+
                     <div className="bg-black/20 rounded-lg p-4 border border-emerald/10">
-                      <h4 className="font-semibold text-emerald mb-2">Web Development</h4>
+                      <h4 className="font-semibold text-emerald mb-2">Graphic Design</h4>
                       <p className="text-emerald/70 text-sm">
-                        Building modern, responsive websites with cutting-edge technologies
+                        Designing visually compelling layouts for posters, social media, and marketing materials
                       </p>
                     </div>
+
                     <div className="bg-black/20 rounded-lg p-4 border border-emerald/10">
-                      <h4 className="font-semibold text-emerald mb-2">Brand Identity</h4>
+                      <h4 className="font-semibold text-emerald mb-2">Brand Visual Identity</h4>
                       <p className="text-emerald/70 text-sm">
-                        Creating memorable brand experiences that tell your story
+                        Building consistent visual identities through logos, color systems, and creative guidelines
                       </p>
                     </div>
+
                     <div className="bg-black/20 rounded-lg p-4 border border-emerald/10">
-                      <h4 className="font-semibold text-emerald mb-2">Consultation</h4>
+                      <h4 className="font-semibold text-emerald mb-2">Concept Art & Storytelling</h4>
                       <p className="text-emerald/70 text-sm">
-                        Providing expert advice on design and development projects
+                        Translating ideas into strong visual concepts that communicate emotion and narrative
                       </p>
                     </div>
                   </div>
-                </div>
 
-                {/* Call to Action */}
-                <div className="bg-gradient-to-r from-emerald/5 to-black/40 border border-emerald/20 rounded-2xl p-8 text-center">
-                  <h3 className="text-xl font-bold text-white mb-4">Let's Work Together</h3>
-                  <p className="text-emerald/70 mb-6">
-                    Interested in collaborating? I'd love to hear about your project and discuss how we can bring your vision to life.
-                  </p>
-                  <a
-                    href="/contact"
-                    className="inline-block px-6 py-3 bg-emerald text-black font-bold rounded-lg hover:bg-emerald-400 transition-colors"
-                  >
-                    Get In Touch
-                  </a>
                 </div>
+                <div className="bg-gradient-to-r from-emerald/5 to-black/40 border border-emerald/20 rounded-2xl p-8 text-center">
+                  <h3 className="text-xl font-bold text-white mb-4">Design Philosophy</h3>
+                  <p className="text-emerald/70 mb-6">
+                    {settings.philosophy}
+                  </p>
+                  <p>- My Creative Manifesto</p>
+                </div>
+                {/* Call to Action */}
               </div>
+            </div>
+            <div className="bg-gradient-to-br from-white/5 to-white/1 backdrop-blur-lg border border-emerald/20 rounded-2xl p-6 px-40 mt-5 text-center">
+              <h3 className="text-xl font-bold text-white mb-4">Let's Work Together</h3>
+              <p className="text-emerald/70 mb-6">
+                Interested in collaborating? I'd love to hear about your project and discuss how we can bring your vision to life.
+              </p>
+              <a
+                href="/contact"
+                className="inline-block px-6 py-3 bg-emerald text-black font-bold rounded-lg hover:bg-emerald-400 transition-colors"
+              >
+                Get In Touch
+              </a>
             </div>
           </div>
         </main>
