@@ -30,6 +30,12 @@ export default function Edit({ project }) {
     form.setData(field, value)
   }
 
+  const formatDate = (date) => {
+    if (!date) return ''
+    return date.split('T')[0]
+  }
+
+
   /* ================= IMAGE UPLOAD ================= */
   async function handleImageUpload(e) {
     const files = Array.from(e.target.files)
@@ -189,6 +195,16 @@ export default function Edit({ project }) {
               <input
                 value={form.data.project_url}
                 onChange={e => update('project_url', e.target.value)}
+                className={inputClass}
+              />
+            </div>
+            {/* Published At */}
+            <div>
+              <div className={labelClass}>Published At</div>
+              <input
+                type="date"
+                value={formatDate(form.data.published_at)}
+                onChange={e => update('published_at', e.target.value)}
                 className={inputClass}
               />
             </div>

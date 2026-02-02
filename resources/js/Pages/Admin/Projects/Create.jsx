@@ -158,6 +158,10 @@ export default function Create() {
                 className={inputClass}
               />
             </div>
+            <div>
+              <div className={labelClass}>Published At</div>
+              <input type="date" value={form.data.published_at} onChange={e => form.setData('published_at', e.target.value)} className={inputClass} />
+            </div>
 
             {/* Featured */}
             <div className="flex items-center justify-between mt-2">

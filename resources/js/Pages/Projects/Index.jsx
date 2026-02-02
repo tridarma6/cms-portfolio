@@ -46,7 +46,7 @@ export default function ProjectsIndex({ projects, tags, settings }) {
             {/* Header */}
             <div className="text-center mb-10">
               <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 font-raluweh">
-                My Projects
+                My <span className='text-emerald'>Projects</span>
               </h1>
               <p className="text-emerald/60 text-lg max-w-2xl mx-auto">
                 A showcase of creative work spanning design, development, and digital experiences

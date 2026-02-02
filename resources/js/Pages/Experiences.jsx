@@ -73,7 +73,7 @@ export default function Experiences({ experiences, settings }) {
           <div className="max-w-6xl mx-auto px-6">
             {/* Header */}
             <div className="text-center mb-16">
-              <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 font-raluweh">Professional Experience</h1>
+              <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 font-raluweh">Professional <span className='text-emerald'>Experiences</span></h1>
               <p className="text-emerald/60 text-lg max-w-2xl mx-auto font-bold">
                 A journey through roles, companies, and achievements that have shaped my career in design and development
               </p>
@@ -104,10 +104,7 @@ export default function Experiences({ experiences, settings }) {
                             : 'none',
                         }}
                       >
-                        {/* overlay supaya teks tetap kebaca */}
                         <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
-
-                        {/* content */}
                         <div className="relative z-10">
 
                           {/* Header */}

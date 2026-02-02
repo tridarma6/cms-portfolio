@@ -86,7 +86,7 @@ export default function Contact({ contactInfo = {}, settings }) {
         <main className="pt-24 pb-12">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-12">
-              <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 font-raluweh">Get In Touch</h1>
+              <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 font-raluweh">Get In <span className='text-emerald'>Touch</span></h1>
               <p className="text-emerald/60 text-lg max-w-2xl mx-auto">
                 Ready to bring your vision to life? Let's discuss your project and create something extraordinary together.
               </p>

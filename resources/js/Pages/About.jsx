@@ -28,7 +28,7 @@ export default function About({ profile, settings, skills }) {
         <main className="pt-24 pb-12">
           <div className="max-w-4xl mx-auto px-6">
             <div className="text-center mb-12">
-              <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 font-raluweh">About Me</h1>
+              <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 font-raluweh">About <span className='text-emerald'>Me</span></h1>
               <p className="text-emerald/60 text-lg">
                 Crafting visual stories through abstract art and surrealist design
               </p>
