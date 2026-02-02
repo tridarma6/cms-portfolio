@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Experience;
 use App\Http\Requests\Admin\StoreExperienceRequest;
 use App\Http\Requests\Admin\UpdateExperienceRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ExperiencesController extends Controller
 {
@@ -27,11 +28,22 @@ class ExperiencesController extends Controller
     }
 
     public function store(StoreExperienceRequest $request)
-    {
-        Experience::create($request->validated());
+    {   
+        $data = $request->validated();
 
-        return redirect()->route('admin.experiences.index')->with('success', 'Experience created.');
+        if ($request->hasFile('image')) {
+            $file = $request->file('image'); // ambil dari request, bukan dari $data
+            $path = $file->store('experiences', 'public');
+            $data['image'] = $path;
+        }
+
+        Experience::create($data);
+
+        return redirect()
+            ->route('admin.experiences.index')
+            ->with('success', 'Experience created.');
     }
+
 
     public function edit(Request $request, Experience $experience)
     {
@@ -54,10 +66,23 @@ class ExperiencesController extends Controller
 
     public function update(UpdateExperienceRequest $request, Experience $experience)
     {
-        $experience->update($request->validated());
+        $data = $request->validated();
 
-        return redirect()->route('admin.experiences.index')->with('success', 'Experience updated.');
+        if ($request->hasFile('image')) {
+            // hapus image lama
+            if ($experience->image) {
+                Storage::disk('public')->delete($experience->image);
+            }
+
+            $data['image'] = $request->file('image')->store('experiences', 'public');
+        }
+
+        $experience->update($data);
+
+        return redirect()->route('admin.experiences.index')
+            ->with('success', 'Experience updated.');
     }
+
 
     public function updateAll(Request $request)
     {

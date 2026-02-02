@@ -3,11 +3,22 @@ import AdminLayout from '../Layout/AdminLayout';
 import { useForm, Link } from '@inertiajs/react';
 
 export default function Create() {
-  const form = useForm({ company: '', role: '', description: '', start_date: '', end_date: '', is_current: false, order: 0 });
+  const form = useForm({ 
+    company: '', 
+    role: '', 
+    description: '', 
+    start_date: '', 
+    end_date: '', 
+    is_current: false, 
+    order: 0,
+    image: null,
+  });
 
   function submit(e) {
     e.preventDefault();
-    form.post('/admin/experiences');
+    form.post('/admin/experiences', {
+      forceFormData: true,
+    });
   }
 
   const inputClass = 'w-full bg-transparent border border-white/6 rounded-md px-3 py-2 text-emerald placeholder-emerald/50';
@@ -36,6 +47,20 @@ export default function Create() {
             <div>
               <div className={labelClass}>Description</div>
               <textarea value={form.data.description} onChange={e => form.setData('description', e.target.value)} placeholder="Description" className={`${inputClass} h-28`} />
+            </div>
+
+            {/* Image */}
+            <div>
+              <div className={labelClass}>Image</div>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={e => form.setData('image', e.target.files[0])}
+                className={inputClass}
+              />
+              {form.errors.image && (
+                <div className="text-red-400 text-sm mt-1">{form.errors.image}</div>
+              )}
             </div>
 
             <div className="grid grid-cols-2 gap-3">

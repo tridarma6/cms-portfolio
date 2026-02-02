@@ -37,7 +37,7 @@ export default function Home({ projects = [], settings = {} }) {
             <div className="absolute inset-0"/>
             {/* style={{background: 'linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.6))'}} */}
             <div className="relative z-10 text-center px-6 max-w-4xl">
-              <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight animate-floaty font-raluweh">Indonesia Based 
+              <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight animate-floaty font-raluweh shadow-sm">Indonesia 
                 <br/>
                 <span className='text-emerald'>
                 Visual Artist

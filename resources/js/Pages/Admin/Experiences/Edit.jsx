@@ -17,12 +17,18 @@ export default function Edit({ experience }) {
     end_date: formatDate(experience.end_date),
     is_current: experience.is_current || false,
     order: experience.order || 0,
+    image: null,
   })
 
   function submit(e) {
     e.preventDefault()
-    form.put(`/admin/experiences/${experience.id}`)
+
+    form.post(`/admin/experiences/${experience.id}`, {
+      forceFormData: true,
+      _method: 'put',
+    })
   }
+
 
   const inputClass =
     'w-full bg-transparent border border-white/6 rounded-md px-3 py-2 text-emerald placeholder-emerald/50 disabled:opacity-40 disabled:cursor-not-allowed'
@@ -76,6 +82,42 @@ export default function Edit({ experience }) {
                 className={`${inputClass} h-28`}
               />
             </div>
+            {/* Image */}
+            <div>
+              <div className={labelClass}>Image</div>
+
+              {/* Preview image lama */}
+              {experience.image && !form.data.image && (
+                <img
+                  src={`/storage/${experience.image}`}
+                  alt="Current Image"
+                  className="w-40 h-40 object-cover rounded-lg mb-3 border border-white/10"
+                />
+              )}
+
+              {/* Preview image baru */}
+              {form.data.image && (
+                <img
+                  src={URL.createObjectURL(form.data.image)}
+                  alt="Preview"
+                  className="w-40 h-40 object-cover rounded-lg mb-3 border border-white/10"
+                />
+              )}
+
+              <input
+                type="file"
+                accept="image/*"
+                onChange={e => form.setData('image', e.target.files[0])}
+                className={inputClass}
+              />
+
+              {form.errors.image && (
+                <div className="text-red-400 text-sm mt-1">
+                  {form.errors.image}
+                </div>
+              )}
+            </div>
+
 
             {/* Dates */}
             <div className="grid grid-cols-2 gap-3">

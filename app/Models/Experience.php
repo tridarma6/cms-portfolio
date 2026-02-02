@@ -13,6 +13,7 @@ class Experience extends Model
         'company',
         'role',
         'description',
+        'image',
         'start_date',
         'end_date',
         'is_current',

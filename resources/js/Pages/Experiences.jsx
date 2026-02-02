@@ -96,62 +96,79 @@ export default function Experiences({ experiences, settings }) {
 
                     {/* Experience Card */}
                     <div className="flex-1 pb-8 mt-8">
-                      <div className="bg-gradient-to-br from-white/5 to-white/1 backdrop-blur-lg border border-emerald/20 rounded-2xl p-8 hover:border-emerald/40 transition-all duration-300 group">
-                        {/* Header */}
-                        <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-6 gap-2">
-                          <div>
-                            <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors">
-                              {experience.role}
-                            </h3>
-                            <div className="flex items-center gap-2 text-emerald font-medium mb-3">
-                              <Building size={18} />
-                              {experience.company}
+                      <div
+                        className="bg-gradient-to-br from-white/5 to-white/1 backdrop-blur-lg border border-emerald/20 rounded-2xl p-8 hover:border-emerald/40 transition-all duration-300 group bg-cover bg-center relative overflow-hidden"
+                        style={{
+                          backgroundImage: experience.image
+                            ? `url(/storage/${experience.image})`
+                            : 'none',
+                        }}
+                      >
+                        {/* overlay supaya teks tetap kebaca */}
+                        <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+
+                        {/* content */}
+                        <div className="relative z-10">
+
+                          {/* Header */}
+                          <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-6 gap-2">
+                            <div>
+                              <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors">
+                                {experience.role}
+                              </h3>
+                              <div className="flex items-center gap-2 text-white font-medium mb-3">
+                                <Building size={18} />
+                                {experience.company}
+                              </div>
+                            </div>
+
+                            {/* Duration badge */}
+                            <div className="flex-shrink-0">
+                              <span className="inline-flex items-center gap-2 px-4 py-2 bg-emerald/10 text-white rounded-full text-sm font-medium ml-4">
+                                <Calendar size={14} />
+                                {calculateDuration(
+                                  experience.start_date,
+                                  experience.end_date,
+                                  experience.is_current
+                                )}
+                              </span>
                             </div>
                           </div>
 
-                          {/* Duration badge */}
-                          <div className="flex-shrink-0">
-                            <span className="inline-flex items-center gap-2 px-4 py-2 bg-emerald/10 text-emerald rounded-full text-sm font-medium ml-4">
-                              <Calendar size={14} />
-                              {calculateDuration(experience.start_date, experience.end_date, experience.is_current)}
+                          {/* Date range */}
+                          <div className="flex items-center gap-2 text-white/60 mb-4">
+                            <Calendar size={16} />
+                            <span>
+                              {formatDate(experience.start_date)} -{' '}
+                              {experience.is_current ? 'Present' : formatDate(experience.end_date)}
                             </span>
+                            {experience.is_current && (
+                              <span className="ml-2 px-2 py-1 bg-emerald/20 text-white text-xs rounded-full">
+                                Current
+                              </span>
+                            )}
                           </div>
-                        </div>
 
-                        {/* Date range */}
-                        <div className="flex items-center gap-2 text-emerald/60 mb-4">
-                          <Calendar size={16} />
-                          <span>
-                            {formatDate(experience.start_date)} - {
-                              experience.is_current
-                                ? 'Present'
-                                : formatDate(experience.end_date)
-                            }
-                          </span>
-                          {experience.is_current && (
-                            <span className="ml-2 px-2 py-1 bg-emerald/20 text-emerald text-xs rounded-full">
-                              Current
-                            </span>
-                          )}
-                        </div>
-
-                        {/* Description */}
-                        <div className="text-emerald/80 leading-relaxed">
-                          {experience.description.split('\n').map((paragraph, idx) => (
-                            <p key={idx} className="mb-3 last:mb-0">
-                              {paragraph}
-                            </p>
-                          ))}
-                        </div>
-
-                        {/* Decorative element */}
-                        <div className="mt-6 flex justify-end">
-                          <div className="w-12 h-12 bg-gradient-to-br from-emerald/20 to-emerald/5 rounded-full flex items-center justify-center opacity-50 group-hover:opacity-100 transition-opacity">
-                            <Award size={20} className="text-emerald" />
+                          {/* Description */}
+                          <div className="text-white/80 leading-relaxed">
+                            {experience.description.split('\n').map((paragraph, idx) => (
+                              <p key={idx} className="mb-3 last:mb-0">
+                                {paragraph}
+                              </p>
+                            ))}
                           </div>
+
+                          {/* Decorative element */}
+                          <div className="mt-6 flex justify-end">
+                            <div className="w-12 h-12 bg-gradient-to-br from-emerald/20 to-emerald/5 rounded-full flex items-center justify-center opacity-50 group-hover:opacity-100 transition-opacity">
+                              <Award size={20} className="text-white" />
+                            </div>
+                          </div>
+
                         </div>
                       </div>
                     </div>
+
                   </div>
                 ))}
               </div>

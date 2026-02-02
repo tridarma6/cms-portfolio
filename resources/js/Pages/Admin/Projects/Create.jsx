@@ -198,7 +198,6 @@ export default function Create() {
               <div className={labelClass}>Project Images</div>
 
               <div className="space-y-4">
-
                 {images.length > 0 ? (
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {images.map((img, idx) => (
