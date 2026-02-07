@@ -37,7 +37,7 @@ export default function Login() {
           {/* Header */}
           <div className="text-center mb-8">
             <h1 className="font-heading text-3xl font-extrabold tracking-widest text-emerald-400">
-              ECLIPSE
+              Portfolio
             </h1>
             <p className="mt-1 text-xs text-emerald-300/60 tracking-widest uppercase">
               Secure Admin Access
